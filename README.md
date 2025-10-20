@@ -33,7 +33,7 @@ API externa: FakeStoreAPI
 
 Clone o repositório:
 
-git clone https://github.com/seu-usuario/loja-virtual.git
+git clone https://github.com/RafaelPereira0/ECommerce.git
 cd loja-virtual
 
 Instale as dependências:
