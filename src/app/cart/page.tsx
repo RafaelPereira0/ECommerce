@@ -8,6 +8,8 @@ const CartPage = () => {
 
     const cart = useContext(CartContext);
 
+    let value:number = 0
+
     const handleRemoveItemCart = (id: number, item: string) => {
         cart?.dispatch({type: 'remove', payload: id})
         alert(`Item ${item} removido com sucesso`)
@@ -34,6 +36,7 @@ const CartPage = () => {
                 <>
                     <ul className="divide-y divide-gray-200 mb-5">
                         {cart?.cart.map((item) => (
+                            
                             <li className="flex items-center justify between py-4" key={item.id}>
                                 <div className="flex items-center gap-4">
                                     <img src={item.image} alt={item.title} className="h-16 w-16 object-contain"/>
@@ -44,12 +47,17 @@ const CartPage = () => {
                                         <p className="text-sm text-gray-500">Quantidade: {item.quantity}</p>
                                     </div>
                                 </div>
+                                {value = value + (item.price * item.quantity)}
                                 <button className="text-red-600 hover:underline cursor-pointer ml-5" onClick={() => handleRemoveItemCart(item.id, item.title)}>
                                     Remover
                                 </button>
                             </li>
-                        ))}
+                            
+                        )
+                        
+                        )}
                     </ul>
+                    <p>Valor total: {value}</p>
                     <button className="text-orange-400 hover:underline cursor-pointer" onClick={() => handleRemoveAllItems()}>
                         Limpar Carrinho
                     </button>
